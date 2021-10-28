@@ -1,0 +1,17 @@
+apiVersion: logging.banzaicloud.io/v1beta1
+kind: Flow
+metadata:
+  name: flow-test
+  namespace: logging
+spec:
+  filters:
+    - grep:
+        regexp:
+          - key: message
+            pattern: /Hello, World/
+    - tag_normaliser:
+        format: ${namespace_name}.${pod_name}.${container_name}
+  localOutputRefs:
+    - test-output
+  match:
+    - select: {}

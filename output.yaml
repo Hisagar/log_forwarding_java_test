@@ -1,0 +1,12 @@
+apiVersion: logging.banzaicloud.io/v1beta1
+kind: Output
+metadata:
+  name: test-output
+  namespace: logging
+spec:
+  http:
+    endpoint: https://enspxiyo7yu31v0.m.pipedream.net
+    headers: {"key1":"value1", "key2":"value2"}
+    buffer:
+      tags: "[]"
+      flush_interval: 10s
